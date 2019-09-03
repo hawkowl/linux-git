@@ -10,7 +10,7 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=5.3_rc4
+pkgver=5.3_rc7
 _branchname="v${pkgver//_/-}"
 pkgrel=1
 arch=('i686' 'x86_64')
