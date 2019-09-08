@@ -12,7 +12,7 @@ pkgbase=linux-git
 _srcname=linux
 pkgver=5.3_rc7
 _branchname="v${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,9 +22,11 @@ source=("https://github.com/torvalds/linux/archive/${_branchname}.tar.gz"
         # the main kernel config files
         'config.x86_64'
         'config.opt'
+        'Add-PCI-device-IDs-for-family-17h-model-70h.diff'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
@@ -50,7 +52,7 @@ prepare() {
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
   # Apply patches
-  patch "${srcdir}/patches/*"
+  patch -t -p1 -i "${srcdir}/Add-PCI-device-IDs-for-family-17h-model-70h.diff"
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
