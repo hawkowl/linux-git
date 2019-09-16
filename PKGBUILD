@@ -21,7 +21,7 @@ options=('!strip')
 source=("https://github.com/torvalds/linux/archive/${_branchname}.tar.gz"
         # the main kernel config files
         'config.x86_64'
-        'config.opt'
+        'config.omnium-gatherum'
         'Add-PCI-device-IDs-for-family-17h-model-70h.diff'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
@@ -35,11 +35,12 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   ln -f -s "linux-${pkgver//_/-}" linux
+  LOCALNAME=$(uname -n)
 
   cd "${_srcname}"
 
-  if [ -f "${srcdir}/config.opt" ]; then
-    cat "${srcdir}/config.opt" > ./.config
+  if [ -f "${srcdir}/config.${LOCALNAME}" ]; then
+    cat "${srcdir}/config.${LOCALNAME}" > ./.config
   elif [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
