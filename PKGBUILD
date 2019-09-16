@@ -21,11 +21,13 @@ options=('!strip')
 source=("https://github.com/torvalds/linux/archive/${_branchname}.tar.gz"
         # the main kernel config files
         'config.x86_64'
+        'config.nascent'
         'config.omnium-gatherum'
         'Add-PCI-device-IDs-for-family-17h-model-70h.diff'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
