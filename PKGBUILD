@@ -11,14 +11,13 @@
 pkgbase=linux-git
 _srcname=linux
 pkgver=5.3.1
-_branchname="v${pkgver//_/-}"
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=("https://github.com/torvalds/linux/archive/${_branchname}.tar.gz"
+source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
         # the main kernel config files
         'config.x86_64'
         'config.nascent'
