@@ -51,8 +51,6 @@ prepare() {
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
-  # Apply patches
-  patch -t -p1 -i "${srcdir}/Add-PCI-device-IDs-for-family-17h-model-70h.diff"
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
