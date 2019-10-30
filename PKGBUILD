@@ -10,23 +10,21 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=5.3.1
+pkgver=5.4_rc5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
+source=("https://git.kernel.org/torvalds/t/linux-${pkgver//_/-}.tar.gz"
         # the main kernel config files
         'config.x86_64'
         'config.nascent'
         'config.omnium-gatherum'
-        'Add-PCI-device-IDs-for-family-17h-model-70h.diff'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
