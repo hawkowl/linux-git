@@ -10,14 +10,16 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=5.4.1
+pkgver=5.4.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=("https://git.kernel.org/torvalds/t/linux-${pkgver//_/-}.tar.gz"
+source=(
+        #"https://git.kernel.org/torvalds/t/linux-${pkgver//_/-}.tar.gz"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver//_/-}.tar.xz"
         # the main kernel config files
         'config.x86_64'
         'config.nascent'
